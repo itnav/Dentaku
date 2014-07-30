@@ -10,24 +10,40 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import jp.itnav.dentakuapp.datamanager.DataManager;
+import jp.itnav.dentakuapp.view.MemoListView;
 
 
 public class MemoListActivity extends Activity {
     private DataManager dataManager;
+    private MemoListView memoListView;
+    private LinearLayout memoHolder;
     Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataManager = new DataManager(this);
+        setContentView(R.layout.activity_memo_list);
 
         String[] memoList = dataManager.getMemoList();
 
-        setContentView(R.layout.activity_memo_list);
+        memoHolder = (LinearLayout) findViewById(R.id.memoList);
+
+        memoListView = new MemoListView(this, memoHolder);
+        for (int i = 0; i < memoList.length; i++) {
+            memoListView.addMemoTitle(memoList[i], new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("text", ((TextView) v).getText().toString());
+                }
+            });
+        }
+
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
 
@@ -35,20 +51,6 @@ public class MemoListActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MemoListActivity.this, ShowMemoActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        ListView listView = (ListView) findViewById(R.id.listView);
-        for(int i = 0;i < memoList.length;i++){
-            ArrayAdapter<String> Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, memoList);
-            listView.setAdapter(Adapter);
-        }
-        listView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MemoListActivity.this, ShowMemoActivity.class);
-                startActivity(intent);
-
             }
         });
     }
