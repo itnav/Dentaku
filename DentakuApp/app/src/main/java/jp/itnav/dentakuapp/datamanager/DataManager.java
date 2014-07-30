@@ -35,18 +35,45 @@ public class DataManager {
 	}
 
 	public String[] getMemoList() {
-		JSONArray jsonArray = data.names();
-		String[] names = new String[jsonArray.length()];
+		if (data.names() != null) {
+			JSONArray jsonArray = data.names();
+			String[] names = new String[jsonArray.length()];
 
-		for (int i = 0; i < names.length; i++) {
-			try {
-				names[i] = jsonArray.getString(i);
-			} catch (JSONException e) {
-				names[i] = "";
-				e.printStackTrace();
+			for (int i = 0; i < names.length; i++) {
+				try {
+					names[i] = jsonArray.getString(i);
+				} catch (JSONException e) {
+					names[i] = "";
+					e.printStackTrace();
+				}
 			}
-		}
 
-		return (names);
+			return (names);
+		} else {
+			return (new String[0]);
+		}
+	}
+
+	public String getMemo(String name) {
+		try {
+			String memo = data.getString(name);
+			return (memo);
+		} catch (JSONException e) {
+			return ("メモがありません");
+		}
+	}
+
+	public void saveMemo(String name, String memo) {
+		try {
+			data.put(name, memo);
+			SharedPreferences.Editor editor = sharedPreferences.edit();
+
+			editor.putString(DATA_KEY, data.toString());
+			editor.commit();
+
+			initData();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 }
