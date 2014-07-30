@@ -9,28 +9,54 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="jp.itnav.dentakuapp.ShowMemoActivity">
 
-//タイトル
+//タイトル(text)
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="タイトル"
+        android:textSize="15dp"
+        />
+//タイトル(box)
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:layout_gravity="center_vertical"
+        android:layout_marginTop="5dp"
         />
 
-//内容
+//内容(text)
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="内容"
+        android:textSize="15dp"
+        android:layout_marginTop="15dp"/>
+//内容(box)
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
         android:layout_gravity="center_vertical"
+        android:layout_marginTop="5dp"
         />
 
-//保存
+//確認(text)
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="この内容を保存しますか？"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"/>
+
+//保存(button)
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="保存"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         />
 </LinearLayout>
