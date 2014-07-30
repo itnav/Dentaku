@@ -23,9 +23,9 @@ public class ShowMemoActivity extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_memo);
 
-//        editText =(EditText)findViewById(R.id.editText);
-//        editText2 =(EditText)findViewById(R.id.editText2);
-//        button =(Button)findViewById(R.id.button);
+        editText =(EditText)findViewById(R.id.editText);
+        editText2 =(EditText)findViewById(R.id.editText2);
+        button =(Button)findViewById(R.id.button);
         button.setOnClickListener(this);
         editText.setText("");
     }
