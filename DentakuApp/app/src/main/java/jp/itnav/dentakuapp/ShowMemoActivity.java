@@ -4,14 +4,38 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import jp.itnav.dentakuapp.R;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class ShowMemoActivity extends Activity {
+import jp.itnav.dentakuapp.datamanager.DataManager;
+
+public class ShowMemoActivity extends Activity implements OnClickListener {
+
+    private DataManager dataManager;
+    EditText editText, editText2;
+    Button button;
+    String filename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_memo);
+        dataManager = new DataManager(this);
+
+        editText = (EditText) findViewById(R.id.editText);
+        editText2 = (EditText) findViewById(R.id.editText2);
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(this);
+        editText.setText("");
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == button) {
+            dataManager.saveMemo(editText.getText().toString(), editText2.getText().toString());
+        }
     }
 
 
