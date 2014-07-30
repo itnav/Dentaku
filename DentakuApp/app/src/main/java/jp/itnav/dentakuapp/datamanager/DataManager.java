@@ -49,4 +49,27 @@ public class DataManager {
 
 		return (names);
 	}
+
+	public String getMemo(String name) {
+		try {
+			String memo = data.getString(name);
+			return (memo);
+		} catch (JSONException e) {
+			return ("メモがありません");
+		}
+	}
+
+	public void saveMemo(String name, String memo) {
+		try {
+			data.put(name, memo);
+			SharedPreferences.Editor editor = sharedPreferences.edit();
+
+			editor.putString(DATA_KEY, data.toString());
+			editor.commit();
+
+			initData();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 }
