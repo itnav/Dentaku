@@ -35,19 +35,23 @@ public class DataManager {
 	}
 
 	public String[] getMemoList() {
-		JSONArray jsonArray = data.names();
-		String[] names = new String[jsonArray.length()];
+		if (data.names() != null) {
+			JSONArray jsonArray = data.names();
+			String[] names = new String[jsonArray.length()];
 
-		for (int i = 0; i < names.length; i++) {
-			try {
-				names[i] = jsonArray.getString(i);
-			} catch (JSONException e) {
-				names[i] = "";
-				e.printStackTrace();
+			for (int i = 0; i < names.length; i++) {
+				try {
+					names[i] = jsonArray.getString(i);
+				} catch (JSONException e) {
+					names[i] = "";
+					e.printStackTrace();
+				}
 			}
-		}
 
-		return (names);
+			return (names);
+		} else {
+			return (new String[0]);
+		}
 	}
 
 	public String getMemo(String name) {
