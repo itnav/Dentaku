@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.itnav.c4" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MyActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ImagePageActivity" />
+        <activity android:name=".ImagePage2" />
+        <activity android:name=".ImagePage3" />
+        <activity android:name=".Back"/>
+        <activity android:name=".Back2"/>
+        <activity android:name=".Back3"/>
+        <activity android:name=".BackNumberActivity" />
+        <activity android:name=".GestureDetectView" />
+        <activity android:name=".Test"/>
+        <activity android:name=".Test2"/>
+        <activity android:name=".Test3"/>
+        <activity android:name=".Test4"/>
+        <activity android:name=".Test5"/>
+
+
+
+
+    </application>
+
+</manifest>
